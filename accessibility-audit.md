@@ -2,7 +2,7 @@
 title: Accessibility Audit
 ---
 
-# sample accessibility audit
+# sample accessibility Audit
 
 After I finished my class in 2026, I wanted to keep my digital accessibility skills fresh. I asked a website developer if I could review their site and perform a sample audit.
 
@@ -16,7 +16,7 @@ What follows is an explanation of the documents' structure as well as sanitized 
 
 When I first launched the website, I created a rough outline document comparing several sample pages on the site. this aided me in understanding the website's structure and  helped me decide what needed  deeper review verses what parts needed a cursory glance.  I then listed those pages on a Pages tab in a Google Sheet, which was used to create the validation lists for the main audit log. After that, I decided which tools to use. Because the sample audit was conducted independently,  both the scope  and WCAG review areas were tailored to a workflow I could use reliably. This workflow involved keyboard and screen reader use. 
 
-## Document and Over All Structure
+## Document and Overall Structure
 After reviewing the document, I  structured a google sheet around the website using the following tabs
 ### Tabs and What they Represented
 * Index: table of contents for the sheet
@@ -99,15 +99,16 @@ Following is a sample of what issues came up during this audit. They have been s
 * Summary: 
 
   this page’s heading structure does not create a clear content outline. It begins with the generic page title  followed by the repeated heading level six slogan,  then transitions to heading levels two, three, and four for page content and linked items. Several heading level four items appear to function as links rather than section headings.
-* steps: 
+* Steps: 
+
    * Open the indicated page.
    * Using NVDA, navigate by headings.
-  * Observe that the page begins with heading level one  followed by heading level six.”
+   * Observe that the page begins with heading level one  followed by heading level six.”
    * Continue through the heading list and observe that the page uses heading level two   heading level three  and multiple heading level four items for several categories of links.
 * Impact: Screen reader users may rely on headings to understand the structure of a page and move between sections. When heading levels skip unexpectedly or individual links are exposed as headings, the heading list becomes harder to interpret and less useful for navigation.
 * Recommendation: 
   Review the page heading structure so headings identify meaningful sections in a logical hierarchy. Use headings for page and section organization, not only for visual styling or emphasis. Present individual links and link categories  within appropriately labeled sections or lists.
-* Tested using : NVDA with Chrome on Windows plus  keyboard navigation
+* Tested using: NVDA with Chrome on Windows plus  keyboard navigation
 * Notes:
   The repeated heading level six issue is already tracked a separate audit row as a shared header or template pattern. This row focuses on the current page’s main content structure, especially the use of heading level four for linked categories. Confirm whether heading levels are controlled by page content, a CMS template, theme, plugin, or vendor component.
 
@@ -121,6 +122,7 @@ Following is a sample of what issues came up during this audit. They have been s
   The branding logo control is announced by NVDA as “toggle button, not pressed,” however, activating the control leads to an external branding webpage. The exposed role and state do not communicate the control’s link behavior.
 
 * Steps:
+
   * Open the scheduling page.
   * Using NVDA and the keyboard, navigate into the schedule table.
   * Navigate to the control announcing the name of the brand.
@@ -137,3 +139,89 @@ Following is a sample of what issues came up during this audit. They have been s
 
   Activation of the control appears to lead to a separate branding page rather than toggling a state. Confirm whether the incorrect control role and state can be corrected through widget configuration, requires a vendor fix, or requires an alternate accessible implementation.
 
+### Finding Three
+* Page: landing page
+* Issue type: heading semantics
+* WCAG issue: 1.3.1 Info and Relationships
+* Severity: Medium
+* Summary:
+  The slogan in the header area of the landing page is exposed to NVDA as a heading level six even though it appears to function as tagline or branding text rather than a page section heading.
+* Steps:
+ 
+   * Open the main landing page.
+   * Using NVDA, start at the top of the page and navigate through the header area.
+   * Observe that the page begins with a heading level one, followed by branding text exposed to NVDA as heading level six.
+   * Continue navigating the page and review the remaining heading structure.
+* Impact:
+  Screen reader users may rely on headings to understand page structure and move between sections. If branding or tagline text is exposed as a heading, the heading structure may be less meaningful and more difficult to interpret.
+* Recommendation:
+  Review the header or theme markup so headings are used only for meaningful page or section structure. If the heading level six is generated by the CMS, theme, or vendor-controlled component, determine whether the markup can be adjusted or whether an alternate accessible configuration is available.
+* Tested using: NVDA with Chrome on Windows plus  keyboard navigation
+* Notes:
+
+  Confirm whether the tagline is intended to function as a section heading or as branding or supporting text. Also confirm whether the heading level is controlled by the CMS, theme, or vendor component.
+  The same heading-semantic pattern was observed on a landing page, a page containing a form, a page containing a map, a scheduling page, a shopping page, and an emergency alerts page. The branding logo's text is exposed to NVDA as heading level six, which suggests the issue may occur in a repeated header or template component.
+
+### Finding Four
+
+* Page: landing page
+* Issue type: non-text content
+* WCAG issue: 1.1.1 Non-text Content
+* Severity: Low
+* Summary:
+  A linked schedule graphic in the main content area is announced with alternative text that contains apparent wording and spelling errors. Although the destination is communicated, the text alternative may benefit from review for accuracy and clarity.
+* Steps:
+
+   * Open the main landing page.
+   * Using NVDA, navigate through the main content area until reaching the linked schedule graphic.
+   * Observe that NVDA announces the graphic with apparent wording or spelling errors.
+   * Take note of the wording or spelling errors.
+* Impact:
+  Screen reader users receive this accessible text as the description and identification of the linked graphic. Wording errors may make the announcement less clear or polished than intended.
+* Recommendation:
+  Review the accessible text for accuracy, clarity, and relevance to the linked graphic’s purpose in context. Correct wording errors identified during review.
+* Tested using: NVDA with Chrome on Windows plus keyboard navigation
+* Notes:
+
+  The accessible text communicates that activating the linked graphic leads to the calendar schedule. This finding is limited to review of the accuracy and clarity of the text alternative, including the apparent wording and spelling errors.
+
+## Step Four: Build  the Executive Summary Tab, Pivot Tables, and Executive Summary Document
+  
+When it was time to construct the Executive Summary tab, I pulled a simplified representation of data from the NVDA Log. One table, titled “Severity grouped by category,” used two columns: Severity and Total.
+The purpose of this table was to provide an easy-to-read count of issues by severity. I used the following formula in column B:
+
+```
+=COUNTIF('NVDA Log'!$E$2:$E, A4)
+```
+
+The formula counted how many times the severity label in A4 appeared in the severity column (column E) of the NVDA Log. The Reference Lists tab was used to populate the severity labels, so the wording stayed consistent. The formula was copied down column B so A5 could be the lookup, then A6 and so on. A total row was displayed for reporting purposes. 
+
+
+A second table, titled “Issues by page,” categorized findings by page. The columns were Page Name and Number of Issues Found.
+I used this formula:
+
+```
+=countif('NVDA Log'!$B$2:$B, A14)
+```
+
+Similar to the severity table, this formula counted how many times the page name in A14 appeared in the Page column of the NVDA Log. The page names were pulled from the Pages and Scope tab so the wording stayed consistent. The formula was copied down the B column so A15, A16, etc. were used as lookup values. Similar to the formula above, a total row was included for reporting purposes.
+
+The pivot tables were also built from the NVDA Log. They grouped findings into the following views:
+
+* Issue Count by Page
+* Issue Count by Severity and WCAG Criterion
+* Findings by Page
+* Percentage of Findings Grouped by WCAG Criterion
+
+These pivot tables provided a more detailed review of the audit results than the simplified Executive Summary tab. Some tables could be expanded or collapsed to review additional detail. Additional space was reserved so the workbook could support future findings if more issues were identified.
+
+After the spreadsheet was created, I then  used the Executive Summary document to present the audit results in a more narrative format. The The purpose of the document was to summarize the scope, limitations, overall findings, recommended priority areas, and conclusion. It was intended to give the developer a clearer overview of what needed attention without requiring them to read every row of the audit log.
+
+## Skills Demonstrated
+
+
+The above sample audit demonstrates my ability to scope a review, organize findings, use spreadsheet formulas and pivot tables to summarize results, and communicate accessibility issues in a way that supports developer review. It also shows my attention to sanitizing client-facing work before sharing it publicly.
+
+## Conclusion
+
+This project gave me an opportunity to keep my accessibility auditing skills active after a class while practicing documentation, spreadsheet reporting, and clear communication of accessibility barriers.
