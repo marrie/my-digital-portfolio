@@ -1,5 +1,5 @@
 ---
-title: Sample DocumentationT
+title: Sample Documentation
 ---
 
 # Document Samples
