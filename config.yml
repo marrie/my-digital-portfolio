@@ -1,3 +1,8 @@
-title: Sarah's Digital Portfolio
-description: A detailed portfolio showing sample audits and technical documentation 
+title: "Sarah's Digital Portfolio"
+description: "A detailed portfolio showing sample audits and technical documentation"
 theme: minima
+
+header_pages:
+  - index.md
+  - accessibility-audit.md
+  - documentation-samples.md
