@@ -1,8 +1,8 @@
 ---
-title: Accessibility Audit
+title: A Sample Accessibility Audit
 ---
 
-# sample accessibility Audit
+
 
 After I finished my class in 2026, I wanted to keep my digital accessibility skills fresh. I asked a website developer if I could review their site and perform a sample audit.
 

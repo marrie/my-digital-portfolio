@@ -2,7 +2,7 @@
 title: Sample Documentation
 ---
 
-# Document Samples
+
 
 The purpose of this page is to demonstrate some of the technical documentation I have done in my career. My goal in documentation is to show steps, processes, and reasoning in a concise and easy-to-understand format. I want the end user to understand my thinking if they either encounter the same process or need to do a similar task.
 
